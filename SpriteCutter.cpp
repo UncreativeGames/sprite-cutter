@@ -17,6 +17,8 @@ int main()
     sf::Vector2i screenDimensions(screen_size_x, screen_size_y);
     sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Sprite Cutter! v0.1");
     window.setFramerateLimit(60);
+    // Set câmera
+    sf::View view = window.getDefaultView();
     // load texture (spritesheet)
     sf::Texture texture;
     if (!texture.loadFromFile("player.png")) {
@@ -69,8 +71,43 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
             cout << "frame" << frame_count << ":" << "X:"<< pos_x << ","<< pos_y << ","<< size_x << ","<< size_y << endl;
         }
-
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+        {
+		    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	        {
+	            view.setCenter(view.getCenter().x+1, view.getCenter().y);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	        {
+	            view.setCenter(view.getCenter().x-1, view.getCenter().y);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	        {
+	            view.setCenter(view.getCenter().x, view.getCenter().y-1);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	        {
+	            view.setCenter(view.getCenter().x, view.getCenter().y+1);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+	        {
+	            view.rotate(-0.1f);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+	        {
+	            view.rotate(0.1f);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	        {
+	            view.zoom(1.1f);
+	        }
+	        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	        {
+	            view.zoom(0.9f);
+	        }
+	    }
         // draw
+        window.setView(view);
         window.clear();
         window.draw(sprite);
         window.display();
