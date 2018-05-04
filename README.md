@@ -6,3 +6,7 @@ Simple program to get sprites in SFML format!
 * Arrows To change position
 
 * Enter/Return to get sprite size and position
+
+* SHIFT+Arrows to Zoom
+
+* Shift+WASD to reposition
