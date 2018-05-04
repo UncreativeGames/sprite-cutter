@@ -31,6 +31,7 @@ int main()
     sf::Sprite sprite;
     sprite.setTexture(texture);
     sprite.setPosition(screen_size_x/2,screen_size_y/2);
+    sf::Color bg(0, 123, 250);
     while (window.isOpen()) {
         sprite.setTextureRect(sf::IntRect(pos_x, pos_y, size_x, size_y));
         sf::Event event;
@@ -108,7 +109,7 @@ int main()
 	    }
         // draw
         window.setView(view);
-        window.clear();
+        window.clear(bg);
         window.draw(sprite);
         window.display();
     }
